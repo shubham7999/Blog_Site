@@ -2,16 +2,19 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
-//const port = 
+const port = process.env.PORT || '8000';
 // express app
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = 'mongodb://localhost:27017/blogs'
+const url = 'mongodb+srv://shubh:shampuu12@cluster0.frapg.mongodb.net/blogsite?retryWrites=true&w=majority'
+//const dbURI = 'mongodb://localhost:27017/blogs'
+const dbURI = url;
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(8000))
-  .catch(err => console.log(err));
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true , useFindAndModify : false, useCreateIndex:true })
+  .then(result => app.listen(port))
+  .catch(err => console.log(err.message));
 
 // register view engine
 app.set('view engine', 'ejs');
