@@ -9,10 +9,9 @@ const app = express();
 
 dotenv.config({path : './config.env'})
 
-//const dbURI = process.env.DATABASE;
+const dbURI = process.env.DATABASE;
 
-const url = 'mongodb+srv://shubh:shampuu12@cluster0.frapg.mongodb.net/blogsite?retryWrites=true&w=majority'
-const dbURI = url;
+
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true , useFindAndModify : false, useCreateIndex:true })
   .then(result => app.listen(port))
