@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
@@ -6,10 +7,9 @@ const port = process.env.PORT || '8000';
 // express app
 const app = express();
 
-// connect to mongodb & listen for requests
-const url = 'mongodb+srv://shubh:shampuu12@cluster0.frapg.mongodb.net/blogsite?retryWrites=true&w=majority'
-//const dbURI = 'mongodb://localhost:27017/blogs'
-const dbURI = url;
+dotenv.config({path : './config.env'})
+
+const dbURI = process.env.DATABASE;
 
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true , useFindAndModify : false, useCreateIndex:true })
