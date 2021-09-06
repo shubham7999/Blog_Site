@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
-
+//const port = 
 // express app
 const app = express();
 
@@ -10,7 +10,7 @@ const app = express();
 const dbURI = 'mongodb://localhost:27017/blogs'
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(3000))
+  .then(result => app.listen(8000))
   .catch(err => console.log(err));
 
 // register view engine
